@@ -176,5 +176,5 @@ export function Validate(endpoint) {
 }
 
 export function ImageUrl() {
-    return "https://cdn.shopify.com/s/files/1/0601/6784/7989/files/ua_2.jpg?v=1707328993";
+    return "https://raw.githubusercontent.com/meghundul/daxa-m84-qmk-signalrgb/refs/heads/main/assets/Rexus_Daxa_M84_Ultimate.png";
 }
