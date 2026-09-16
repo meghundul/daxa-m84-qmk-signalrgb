@@ -68,7 +68,7 @@ Download the `.bin` from the [Releases](../../releases/latest) page. No build en
 | **Already on QMK** | Press **FN + Esc** |
 | **Hardware — short BOOT + GND pins** | Use tweezers or a wire to bridge the two pads shown below before plugging in USB. Use this method if the keyboard is unresponsive to the other two options. |
 
-![Daxa M84 Ultimate bootloader pins — short BOOT and GND to enter DFU mode]([https://raw.githubusercontent.com/meghundul/daxa-m84-qmk-srgb/refs/heads/main/Daxa%20M84U%20bootloader.png](https://raw.githubusercontent.com/meghundul/daxa-m84-qmk-signalrgb/refs/heads/main/assets/Daxa_M84U_bootloader.png))
+![Daxa M84 Ultimate bootloader pins — short BOOT and GND to enter DFU mode](https://raw.githubusercontent.com/meghundul/daxa-m84-qmk-signalrgb/refs/heads/main/assets/Daxa_M84U_bootloader.png)
 
 > **How to short:** Open the keyboard case, locate the two pads labelled in the image, bridge them with a bent paperclip or tweezers, then plug in USB while holding the bridge. Release once the device appears as a detected device in Sonix Flasher.
 
