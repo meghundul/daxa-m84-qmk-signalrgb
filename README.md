@@ -12,7 +12,7 @@ Enables full per-key RGB sync via SignalRGB using a lightweight Raw HID protocol
 | 🔴 | **Wireless is permanently disabled.** This keyboard's 2.4 GHz dongle and Bluetooth modes are not supported by QMK. After flashing, the keyboard works **via USB cable only**. Wireless cannot be restored without re-flashing the original Rexus stock firmware. |
 | 🔴 | **Rexus Control software stops working.** The stock app will no longer control RGB or any keyboard settings after flashing. |
 | 🟡 | **VIA/Vial is not supported.** Intentionally disabled. To remap keys, edit `keymap.c` and recompile. |
-| 🟡 | **Back up your stock firmware first.** Use QMK Toolbox to save the original `.bin` before flashing if you want the option to revert. |
+| 🟡 | **Back up your stock firmware first.** Use Sonix Flasher's **Dump** option to save the original `.bin` before flashing if you want the option to revert. |
 
 ---
 
@@ -70,21 +70,17 @@ Download the `.bin` from the [Releases](../../releases/latest) page. No build en
 
 ![Daxa M84 Ultimate bootloader pins — short BOOT and GND to enter DFU mode](https://raw.githubusercontent.com/meghundul/daxa-m84-qmk-srgb/refs/heads/main/Daxa%20M84U%20bootloader.png)
 
-> **How to short:** Open the keyboard case, locate the two pads labelled in the image, bridge them with a bent paperclip or tweezers, then plug in USB while holding the bridge. Release once the device appears as a DFU device in QMK Toolbox.
+> **How to short:** Open the keyboard case, locate the two pads labelled in the image, bridge them with a bent paperclip or tweezers, then plug in USB while holding the bridge. Release once the device appears as a detected device in Sonix Flasher.
 
-### Flash with QMK Toolbox (easiest)
+### Flash with Sonix Flasher
 
-1. Download [QMK Toolbox](https://github.com/qmk/qmk_toolbox/releases)
-2. Open → select the `.bin` file
-3. MCU: `SN32F248BF` (or Auto-detect)
-4. Click **Flash**
-5. Keyboard reboots automatically
-
-### Flash with QMK CLI
-
-```bash
-qmk flash -kb rexus/daxa_m84_ultimate -km default
-```
+1. Download [Sonix Flasher](https://github.com/SonixQMK/sonix-flasher/releases)
+2. Enter bootloader mode using one of the methods above
+3. Open Sonix Flasher — the keyboard should appear as a detected device
+4. **Chip:** select `SN32F24x`
+5. **QMK offset:** `0x00` 
+6. Click **Flash QMK** → select `rexus_daxa_m84_ultimate_default.bin`
+7. Wait for the flash to complete — keyboard reboots automatically
 
 ---
 
@@ -94,29 +90,28 @@ qmk flash -kb rexus/daxa_m84_ultimate -km default
 
 | Tool | Notes |
 |------|-------|
-| QMK CLI (latest) | `pip install qmk` |
-| Python 3.10+ | |
-| QMK Firmware | Use the [srgbmods fork](https://github.com/srgbmods/srgbmods-qmk-firmware) for SN32 support |
+| QMK MSYS | Windows build environment — [download here](https://github.com/qmk/qmk_distro_msys/releases/latest) |
+| srgbmods QMK fork | Required for SN32 support — [github.com/srgbmods/srgbmods-qmk-firmware](https://github.com/srgbmods/srgbmods-qmk-firmware) |
 
 ### Steps
 
-```bash
-# 1. Set up QMK (skip if done)
-pip install qmk
-qmk setup
+1. Install **QMK MSYS** and open it
+2. Clone the srgbmods QMK fork (first time only):
+   ```bash
+   qmk setup srgbmods/srgbmods-qmk-firmware
+   ```
+3. Copy the keyboard folder from this repo into your QMK install:
+   ```bash
+   cp -r keyboards/rexus/daxa_m84_ultimate ~/qmk_firmware/keyboards/rexus/daxa_m84_ultimate
+   ```
+4. Compile:
+   ```bash
+   qmk compile -kb rexus/daxa_m84_ultimate -km default
+   ```
 
-# 2. Clone this repo
-git clone https://github.com/YOUR_USERNAME/rexus-daxa-m84-ultimate-qmk.git
-cd rexus-daxa-m84-ultimate-qmk
+Binary output: `C:\Users\YOUR_NAME\qmk_firmware\rexus_daxa_m84_ultimate_default.bin`
 
-# 3. Copy keyboard into your QMK install
-cp -r keyboards/rexus/daxa_m84_ultimate ~/qmk_firmware/keyboards/rexus/daxa_m84_ultimate
-
-# 4. Compile
-qmk compile -kb rexus/daxa_m84_ultimate -km default
-```
-
-Binary output: `~/qmk_firmware/rexus_daxa_m84_ultimate_default.bin`
+> Flash the output `.bin` using Sonix Flasher as described above.
 
 ---
 
