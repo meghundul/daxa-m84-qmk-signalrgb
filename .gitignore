@@ -1,0 +1,34 @@
+# QMK build artifacts
+*.o
+*.hex
+*.elf
+*.map
+*.lst
+*.bin.gz
+
+# QMK CLI generated
+.build/
+.qmk/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Node (if any tooling added later)
+node_modules/
+
+# Logs
+*.log
