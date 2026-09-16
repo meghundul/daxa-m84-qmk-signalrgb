@@ -1,0 +1,6 @@
+#pragma once
+
+#define SN32F24xB_MCUCONF
+#define PLATFORM_MCUCONF
+
+#define SN32_PWM_USE_CT16B1 TRUE
